@@ -8,3 +8,9 @@ inputCheckbox.addEventListener('change', ()=>{
         headerPagesMenu.classList.remove('active');
     }
 });
+
+window.addEventListener('DOMContentLoaded', ()=>{
+    if(window.innerWidth<768){
+    alert("View in desktop mode for better experience");
+}
+});
