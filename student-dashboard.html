@@ -2,235 +2,399 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Student Dashboard • QR‑Attend+</title>
-    <style>
-        :root {
-            --bg: #0b1220;
-            --card: rgba(255, 255, 255, 0.08);
-            --border: rgba(255, 255, 255, 0.12);
-            --text: #e6eefc;
-            --muted: #9fb3d9;
-            --primary: #5b8cff;
-            --accent: #22d3ee;
-            --good: #86efac;
-            --bad: #ff6b6b;
-            --radius: 14px;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard • QR‑Attend+</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #e6eefc;
+      --muted: #9fb3d9;
+      --primary: #5b8cff;
+      --accent: #22d3ee;
+      --good: #86efac;
+      --bad: #ff6b6b;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
 
-        * {
-            box-sizing: border-box;
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        body {
-            margin: 0;
-            font-family: system-ui, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-        }
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 20px;
-            border-bottom: 1px solid var(--border);
-        }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+    }
 
-        .brand {
-            font-weight: 800;
-            letter-spacing: 0.3px;
-        }
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
 
-        .user {
-            font-size: 14px;
-            color: var(--muted);
-        }
+    .user {
+      font-size: 14px;
+      color: var(--muted);
+    }
 
-        main {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 0 16px;
-            display: grid;
-            gap: 16px;
-            grid-template-columns: 1.3fr 1fr;
-        }
+    main {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 0 16px;
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1.3fr 1fr;
+    }
 
-        @media (max-width: 900px) {
-            main {
-                grid-template-columns: 1fr;
-            }
-        }
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
 
-        .card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 18px;
-        }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
 
-        h2 {
-            margin: 0 0 10px;
-            font-size: 18px;
-        }
+    h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
 
-        p.muted {
-            margin: 6px 0 16px;
-            color: var(--muted);
-            font-size: 14px;
-        }
+    p.muted {
+      margin: 6px 0 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
 
-        .row {
-            display: flex;
-            gap: 10px;
-        }
+    .row {
+      display: flex;
+      gap: 10px;
+    }
 
-        input,
-        button,
-        select {
-            padding: 12px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.06);
-            color: var(--text);
-        }
+    input,
+    button,
+    select {
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+    }
 
-        input,
-        select {
-            flex: 1;
-        }
+    input,
+    select {
+      flex: 1;
+    }
 
-        button {
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border: none;
-            color: #071220;
-            font-weight: 700;
-            cursor: pointer;
-        }
+    button {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border: none;
+      color: #071220;
+      font-weight: 700;
+      cursor: pointer;
+    }
 
-        button.ghost {
-            background: transparent;
-            color: var(--text);
-            border: 1px solid var(--border);
-        }
+    button.ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
 
-        .session {
-            padding: 12px;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            align-items: center;
-        }
+    .session {
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
 
-        .badge {
-            padding: 4px 8px;
-            border-radius: 999px;
-            font-size: 12px;
-            border: 1px solid var(--border);
-            color: var(--muted);
-        }
+    .badge {
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
 
-        .badge.open {
-            color: #071220;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border: none;
-        }
+    .badge.open {
+      color: #071220;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border: none;
+    }
 
-        .list {
-            max-height: 380px;
-            overflow: auto;
-        }
+    .list {
+      max-height: 380px;
+      overflow: auto;
+    }
 
-        .msg {
-            margin-top: 10px;
-            font-size: 13px;
-        }
+    .msg {
+      margin-top: 10px;
+      font-size: 13px;
+    }
 
-        .msg.good {
-            color: var(--good);
-        }
+    .msg.good {
+      color: var(--good);
+    }
 
-        .msg.bad {
-            color: var(--bad);
-        }
+    .msg.bad {
+      color: var(--bad);
+    }
 
-        .qr-box {
-            aspect-ratio: 1 / 1;
-            width: 100%;
-            border: 1px dashed var(--border);
-            border-radius: 12px;
-            display: grid;
-            place-items: center;
-            color: var(--muted);
-        }
+    .qr-box {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+    }
 
-        .history-item {
-            padding: 10px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-        }
+    .history-item {
+      padding: 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+    }
 
-        footer {
-            text-align: center;
-            color: var(--muted);
-            font-size: 12px;
-            padding: 20px;
-        }
-    </style>
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 20px;
+    }
+  </style>
 </head>
 
 <body>
-    <header>
-        <div class="brand">QR‑Attend+ • Student</div>
-        <div class="row">
-            <div class="user" id="userInfo">—</div>
-            <button class="ghost" id="signOutBtn">Sign out</button>
-        </div>
-    </header>
+  <header>
+    <div class="brand">QR‑Attend+ • Student</div>
+    <div class="row">
+      <div class="user" id="userInfo">—</div>
+      <button class="ghost" id="signOutBtn">Sign out</button>
+    </div>
+  </header>
 
-    <main>
-        <section class="card">
-            <h2>Active sessions</h2>
-            <p class="muted">Join an open session using QR or code. Your name and time will be recorded.</p>
-            <div class="list" id="sessionsList">
-                <!-- Sessions will render here -->
-            </div>
+  <main>
+    <section class="card">
+      <h2>Active sessions</h2>
+      <p class="muted">Join an open session using QR or code. Your name and time will be recorded.</p>
+      <div class="list" id="sessionsList">
+        <!-- Sessions will render here -->
+      </div>
 
-            <h3 style="margin:12px 0 8px; font-size:16px;">Join by code</h3>
-            <div class="row">
-                <input id="codeInput" placeholder="Enter session code (e.g., ABC123)" />
-                <button id="joinByCodeBtn">Join</button>
-            </div>
-            <div id="joinMsg" class="msg"></div>
+      <h3 style="margin:12px 0 8px; font-size:16px;">Join by code</h3>
+      <div class="row">
+        <input id="codeInput" placeholder="Enter session code (e.g., ABC123)" />
+        <button id="joinByCodeBtn">Join</button>
+      </div>
+      <div id="joinMsg" class="msg"></div>
 
-            <h3 style="margin:16px 0 8px; font-size:16px;">Join by QR</h3>
-            <div class="qr-box" id="qrBox">Camera preview</div>
-            <div class="row" style="margin-top:8px;">
-                <button id="startScanBtn">Start scanning</button>
-                <button id="stopScanBtn" class="ghost">Stop</button>
-            </div>
-            <div id="qrMsg" class="msg"></div>
-        </section>
+      <h3 style="margin:16px 0 8px; font-size:16px;">Join by QR</h3>
+      <div class="qr-box" id="qrBox">Camera preview</div>
+      <div class="row" style="margin-top:8px;">
+        <button id="startScanBtn">Start scanning</button>
+        <button id="stopScanBtn" class="ghost">Stop</button>
+      </div>
+      <div id="qrMsg" class="msg"></div>
+    </section>
 
-        <aside class="card">
-            <h2>Your attendance</h2>
-            <p class="muted">Recent sessions you joined.</p>
-            <div id="historyList">
-                <!-- History renders here -->
-            </div>
-        </aside>
-    </main>
+    <aside class="card">
+      <h2>Your attendance</h2>
+      <p class="muted">Recent sessions you joined.</p>
+      <div id="historyList">
+        <!-- History renders here -->
+      </div>
+    </aside>
+  </main>
 
-    <footer>Built by Vishnu • HITAM</footer>
+  <footer>Built by Vishnu • HITAM</footer>
 
-    <script type="module" src="./student-dashboard.js"></script>
+
+  <script type="module">
+    /* ---------------------------
+       1. Firebase Initialization
+    ---------------------------- */
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+    import { Html5Qrcode } from "https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyADeJgC3axWQO7cTP7SXxSzxqC8Dg4zH-s",
+      authDomain: "login-student-bfba0.firebaseapp.com",
+      projectId: "login-student-bfba0",
+      storageBucket: "login-student-bfba0.firebasestorage.app",
+      messagingSenderId: "743079902423",
+      appId: "1:743079902423:web:fe3d13f8d4dcbafcb5c492",
+      measurementId: "G-ZET7SGMD9J"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    /* ---------------------------
+       2. Auth State Handling
+    ---------------------------- */
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        document.getElementById("userInfo").textContent = user.email;
+        loadHistory();
+      } else {
+        window.location.href = "login.html"; // redirect if not logged in
+      }
+    });
+
+    /* ---------------------------
+       3. Sign Out
+    ---------------------------- */
+    document.getElementById("signOutBtn").addEventListener("click", () => {
+      signOut(auth).then(() => {
+        window.location.href = "login.html";
+      });
+    });
+
+    /* ---------------------------
+       4. Join Session Function
+    ---------------------------- */
+    async function joinSession(sessionCode, msgTarget) {
+      try {
+        const user = auth.currentUser;
+        if (!user) {
+          msgTarget.textContent = "Please log in first.";
+          return;
+        }
+
+        const idToken = await user.getIdToken();
+
+        const res = await fetch("http://127.0.0.1:5000/join", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": idToken
+          },
+          body: JSON.stringify({ code: sessionCode })
+        });
+
+        const data = await res.json();
+        msgTarget.textContent = res.ok
+          ? "✅ Attendance marked!"
+          : "❌ " + data.error;
+
+        if (res.ok) {
+          loadHistory();
+        }
+      } catch (err) {
+        console.error(err);
+        msgTarget.textContent = "Something went wrong.";
+      }
+    }
+
+    /* ---------------------------
+       5. Join by Code Button
+    ---------------------------- */
+    document.getElementById("joinByCodeBtn").addEventListener("click", () => {
+      const code = document.getElementById("codeInput").value.trim();
+      const msg = document.getElementById("joinMsg");
+      if (code) {
+        joinSession(code, msg);
+      } else {
+        msg.textContent = "Please enter a session code.";
+      }
+    });
+
+    /* ---------------------------
+       6. QR Scanner
+    ---------------------------- */
+    const qrBox = document.getElementById("qrBox");
+    const qrMsg = document.getElementById("qrMsg");
+    const scanner = new Html5Qrcode("qrBox");
+
+    document.getElementById("startScanBtn").addEventListener("click", () => {
+      qrMsg.textContent = "";
+      Html5Qrcode.getCameras().then(cameras => {
+        if (cameras.length) {
+          scanner.start(
+            cameras[0].id,
+            { fps: 10, qrbox: 250 },
+            (decodedText) => {
+              scanner.stop();
+              joinSession(decodedText, qrMsg);
+            },
+            (errorMessage) => {
+              console.warn(errorMessage);
+            }
+          );
+        } else {
+          qrMsg.textContent = "No camera found.";
+        }
+      });
+    });
+
+    document.getElementById("stopScanBtn").addEventListener("click", () => {
+      scanner.stop().then(() => {
+        qrMsg.textContent = "Scanner stopped.";
+      }).catch(err => {
+        qrMsg.textContent = "Error stopping scanner.";
+      });
+    });
+
+    /* ---------------------------
+       7. Load Attendance History
+    ---------------------------- */
+    async function loadHistory() {
+      const user = auth.currentUser;
+      if (!user) return;
+
+      const idToken = await user.getIdToken();
+
+      const res = await fetch("http://127.0.0.1:5000/history", {
+        method: "GET",
+        headers: { "Authorization": idToken }
+      });
+
+      const data = await res.json();
+      const container = document.getElementById("historyList");
+      container.innerHTML = "";
+
+      if (res.ok) {
+        if (data.length === 0) {
+          container.innerHTML = "<p class='muted'>No sessions joined yet.</p>";
+        } else {
+          data.forEach(session => {
+            const div = document.createElement("div");
+            div.className = "history-item";
+            div.innerHTML = `
+          <strong>${session.title}</strong>
+          <span class="muted">${session.time}</span>
+        `;
+            container.appendChild(div);
+          });
+        }
+      } else {
+        container.innerHTML = `<p class="error">Error: ${data.error}</p>`;
+      }
+    }
+  </script>
 </body>
 
 </html>
